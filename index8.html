@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript</title>
+    <script type="text/javascript">
+     function buttonClick (button){
+       alert ("Вы нажали на кнопку. Кнопка имеет имя"+ button.name+",также value равно "+ button.value+".");
+
+     }
+        var counter=0;
+       function OnMousCounter (element){
+        // var counter=0; локальная переменная
+         counter++;
+         element.innerHTML="На етот текст навили " + counter + " раз";
+       }
+
+    </script>
+  </head>
+  <body>
+
+    <input type="button"name="b"value="Click me"onclick="buttonClick  (this)"/>
+
+    <span onmouseover="OnMousCounter (this) ">На етот текст навили 0 раз</span>
+
+  </body>
+</html>
