@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript</title>
+    <script type="text/javascript">
+     function valid(form){
+        var fail=false;
+        var name=form.name.value;
+        var email=form.email.value;
+        var password=form.password.value;
+        var RePassword=form.RePassword.value;
+        var state=form.state.value;
+
+        var adr_pattern = /[0-9a-z_-]+@[0-9a-z_-]+\.[a-z]{2,5}/i;
+
+
+        if (name ==""|| name == "")
+          fail = "вы не ввели свое имя" ;
+        //else if (email.split('@').lenght -1 == 0) можна любой символ
+        //  fail = "вы  ввели email неправельно" ;
+        else if (adr_pattern.test(email)==false)
+          fail = "вы  ввели email неправельно" ;
+        else if (password=="")
+          fail = "введите пароль" ;
+        else if (password!=RePassword)
+          fail = "пароли не совпадают" ;
+        else if (state=="")
+          fail = "укажите пол" ;
+
+          if (fail)
+           alert(fail);
+           else
+             window.location="https://mediametrics.ru/rating/ua/online.html";//направляем на другую страницу
+
+
+
+
+
+     }
+
+    </script>
+  </head>
+  <body>
+
+  <form action=""method="post"name="test"id="form">
+    <label for="name">имя</label>
+    <input type="text"name="name"placeholder="имя"id="name"/> <br/><br/>
+    <label for="email">email</label>
+    <input type="text"name="email"placeholder="email"id="email"/> <br/><br/>
+    <label for="password">пароль</label>
+    <input type="password"name="password"placeholder="пароль"id="password"/><br/><br/>
+    <label for="RePassword">проверка пароля</label>
+    <input type="password"name="RePassword"placeholder="введите пароль"id="RePassword"/><br/><br/>
+    <span>пол:</span>
+    <input type="radio"name="state"id="nale"value="мужской"/>
+    <label for="nale">мужской</label>
+    <input type="radio"name="state"id="fenale"value="женский"/>
+    <label for="fenale">женский</label><br/><br/>
+    <input type="button"onclick="valid(document.getElementById('form'))" name="submit" value="готово">
+  </form>
+
+  </body>
+</html>
