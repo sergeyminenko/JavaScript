@@ -8,7 +8,7 @@
     <button onclick="speech()">Слушать</button>
     <button onclick="talk()">Проговорить</button>
     <button onclick="stop()">Остановить</button>
-    <script>
+    <script  >
      var recognizer = new webkitSpeechRecognition();
 
      recognizer.interinResults = true;
@@ -29,12 +29,15 @@
      function speech(){
        recognizer.start();
      }
+     var synth = window.speechSynthesis;
+     var utterance=new SpeechSynthesisUtterance('JavaScript SpeechSynthesis Utterance.');
 
      function talk (){
-       speechSynthesis.speak(
-       new SpeechSynthesisUtterance('JavaScript SpeechSynthesis Utterance.')
-      );
+       speechSynthesis.speak(utterance);
      }
+       function stop(){
+         synth.pause();
+       }
 
     </script>
 
