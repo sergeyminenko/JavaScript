@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <button onclick="speech()">Слушать</button>
+    <button onclick="talk()">Проговорить</button>
+    <button onclick="stop()">Остановить</button>
+    <script  >
+     var recognizer = new webkitSpeechRecognition();
+     recognizer.interinResults = true;
+     recognizer.lang = "ru-Ru";
+     recognizer.ouresult = function (event){
+       var result =event.results(event.resultIndex);
+       if (result.isFinal) {
+         alert('Вы сказали:'+result[0].transcript);
+       }else {
+         console.log('Промежуточный результат: ',
+         result[0].transcript);
+       }
+     };
+     function speech(){
+       recognizer.start();
+     }
+     var synth = window.speechSynthesis;
+     var utterance=new SpeechSynthesisUtterance('JavaScript SpeechSynthesis Utterance.');
+     function talk (){
+       speechSynthesis.speak(utterance);
+     }
+       function stop(){
+         synth.pause();
+       }
+    </script>
+
+  </body>
